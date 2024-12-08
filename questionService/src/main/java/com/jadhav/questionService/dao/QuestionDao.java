@@ -29,7 +29,15 @@ public class QuestionDao {
         return questionRepo.findByCategory(category);
     }
 
-    public List<Question> getRandomQuestionByCategory(String category, Long numOfQuestions) {
+    public List<Long> getRandomQuestionByCategory(String category, Long numOfQuestions) {
         return questionRepo.findRandomQuestionByCategory(category, numOfQuestions);
+    }
+
+    public List<Question> getQuestionByIds(List<Long> questionIds) {
+        return questionRepo.findByIdIn(questionIds);
+    }
+
+    public String getAnsById(Long id) {
+        return questionRepo.findAnswerById(id).getAnswer();
     }
 }

@@ -1,6 +1,8 @@
 package com.jadhav.questionService.controller;
 
 
+import com.jadhav.questionService.dto.QuestonDto;
+import com.jadhav.questionService.dto.ResponseDto;
 import com.jadhav.questionService.entity.Question;
 import com.jadhav.questionService.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +74,38 @@ public class QuestionController {
         return  new ResponseEntity<>(questionsList,HttpStatus.OK);
     }
 
+    @PostMapping("getQuestionIds")
+    public ResponseEntity<List<Long>> getQuestionIdsForQuiz(@RequestParam String category, @RequestParam Long numOfQuestions){
+        List<Long> questionIds = new ArrayList<>();
+        try {
+            questionIds = questionService.getQuestionIdsForQuiz(category, numOfQuestions);
+        }catch (Exception ex){
+            //log e
+        }
+        return new ResponseEntity<>(questionIds,HttpStatus.OK);
+    }
 
+    @PostMapping("getQuestionByIds")
+    public ResponseEntity<List<QuestonDto>> getQuestionByIds(@RequestParam List<Long> questionIds){
+        List<QuestonDto> questonDtos = new ArrayList<>();
+        try {
+            questonDtos = questionService.getQuestionByIds(questionIds);
+        }catch (Exception ex){
+            //log e
+        }
+        return new ResponseEntity<>(questonDtos,HttpStatus.OK);
+    }
+
+    @PostMapping("getMarks")
+    public ResponseEntity<Integer> getMarks(@RequestBody List<ResponseDto> responseDtos){
+        Integer marks = 0;
+        try {
+            marks = questionService.calCulateMarks(responseDtos);
+        }catch (Exception ex){
+            //log e
+            return new ResponseEntity<>(-1,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(marks,HttpStatus.OK);
+    }
 
 }
