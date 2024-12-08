@@ -1,0 +1,11 @@
+
+## GET
+http://localhost:8091/question/greet
+http://localhost:8091/question/getAllQuestions
+http://localhost:8091/question/category/java
+
+## DELETE
+http://localhost:8091/question/deleteQuestion/13
+
+## POST
+http://localhost:8091/question/addOrUpdateQuestion
