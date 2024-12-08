@@ -1,0 +1,12 @@
+get
+http://localhost:8090/question/getAllQuestions
+http://localhost:8090/question/category/java
+http://localhost:8090/quiz/get/3
+
+delete
+http://localhost:8090/question/deleteQuestion/5
+
+post
+http://localhost:8090/question/addOrUpdateQuestion
+http://localhost:8090/quiz/create?category=python&numOfQuestions=3&title=pytest3Q
+http://localhost:8090/quiz/submit/2
