@@ -1,5 +1,5 @@
 
-##how to create an eureka service-registry
+# how to create an eureka service-registry
 1.create spring boot web app using two dependencies
   a.Spring Web
   b.Eureka Server
